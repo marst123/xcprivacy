@@ -39,6 +39,7 @@ post_install do |installer|
     # Execute the installation
     PrivacyInfoInstaller.install(installer, target_paths)
 end
+```
 
 ## Author
 
