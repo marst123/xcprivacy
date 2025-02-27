@@ -1,0 +1,16 @@
+target 'Target' do
+  pod 'xcprivacy', :path => './Pods/xcprivacy'
+
+end
+
+post_install do |installer|
+    # 确保正确加载 PrivacyInfoInstaller.rb
+    require_relative File.expand_path('./Pods/xcprivacy/PrivacyInfoInstaller')
+    
+    # 调用 PrivacyInfoInstaller 中的 install 方法，并传递 target_paths 配置
+    target_paths = {
+      'MBProgressHUD' => '',
+      'ReachabilitySwift' => 'Sources'
+    }
+    PrivacyInfoInstaller.install(installer, target_paths)
+end
